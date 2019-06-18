@@ -19,4 +19,8 @@ This file installs neovim and adds [my basic setup](https://github.com/jobstoit/
 ```bash
 $ curl -fsSL https://raw.github.com/jobstoit/mac-setup/master/neovim.sh | sh
 ```
-
+## Flutter
+This file installs flutter
+```bash
+$ curl -fsSL https://raw.github.com/jobstoit/mac-setup/master/flutter.sh | sh
+```
