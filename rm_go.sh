@@ -2,11 +2,11 @@
 sudo echo 'Removing go...'
 sudo rm -rf $(which go golangci-lint dep) $GOPATH $GOROOT ~/.vim/bundle/vim-go
 
-sed -i '' 's/export GOPATH=\$HOME\/\.go//' ~/.bash_profile
-sed -i '' 's/export GOROOT=\/usr\/local\/go//' ~/.bash_profile
-sed -i '' 's/export PATH=\$GOPATH\/bin:\$PATH//' ~/.bash_profile
+sed -i '' '/export GOPATH=\$HOME\/\.go/d' ~/.bash_profile
+sed -i '' '/export GOROOT=\/usr\/local\/go/d' ~/.bash_profile
+sed -i '' '/export PATH=\$GOPATH\/bin:\$PATH/d' ~/.bash_profile
 
-sed -i '' 's/" go configuration//' ~/.vim/vimrc
-sed -i '' 's/let g:go_fmt_command = "goimports"//' ~/.vim/vimrc
-sed -i '' 's/let g:go_metalinter_autosave = 1//' ~/.vim/vimrc
+sed -i '' '/" go configuration/d' ~/.vim/vimrc
+sed -i '' '/let g:go_fmt_command = "goimports"/d' ~/.vim/vimrc
+sed -i '' '/let g:go_metalinter_autosave = 1/d' ~/.vim/vimrc
 

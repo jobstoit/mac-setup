@@ -9,8 +9,12 @@ ln -f -s /usr/local/omnisharp/run /usr/local/bin/omnisharp
 
 printf "export DOTNET_ROOT=/usr/local/dotnet\n" >> $HOME/.bash_profile
 printf "export PATH=\$HOME/.dotnet/tools:\$PATH\n" >> $HOME/.bash_profile
+printf "export MSBuildSDKsPath=\$DOTNET_ROOT/sdk/\$(dotnet --version)/Sdks\n" >> $HOME/.bash_profile
 
 git clone -q https://github.com/OmniSharp/omnisharp-vim.git ~/.vim/bundle/omnisharp-vim
 printf "\" Omnisharp configuration\n" >> ~/.vim/vimrc
+printf "let g:OmniSharp_server_stdio = 1\n" >> ~/.vim/vimrc
 printf "let g:OmniSharp_server_path = '/usr/local/omnisharp/run'\n" >> ~/.vim/vimrc
 printf "let g:SuperTabDefaultCompletionTypeDiscovery = [\"&omnifunc:<c-x><c-o>\", \"&completefunc:<c-x><c-n>\"]\n" >> ~/.vim/vimrc
+
+dotnet tool install --global dotnet-ef
