@@ -12,7 +12,5 @@ printf "export PATH=\$HOME/.dotnet/tools:\$PATH\n" >> $HOME/.bash_profile
 
 git clone -q https://github.com/OmniSharp/omnisharp-vim.git ~/.vim/bundle/omnisharp-vim
 printf "\" Omnisharp configuration\n" >> ~/.vim/vimrc
-printf "let g:Omnisharp_server_use_mono = 1\n" >> ~/.vim/vimrc
-printf "let g:Omnishapr_server_stdio = 1\n" >> ~/.vim/vimrc
-printf "let g:ale_linters = { 'cs': ['OmniSharp'] }\n" >> ~/.vim/vimrc
+printf "let g:OmniSharp_server_path = '/usr/local/omnisharp/run'\n" >> ~/.vim/vimrc
 printf "let g:SuperTabDefaultCompletionTypeDiscovery = [\"&omnifunc:<c-x><c-o>\", \"&completefunc:<c-x><c-n>\"]\n" >> ~/.vim/vimrc
