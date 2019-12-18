@@ -10,3 +10,8 @@ sed -i '' '/" Omnisharp configuration/d' ~/.vim/vimrc
 sed -i '' "/let g:OmniSharp_server_stdio = 1/d" ~/.vim/vimrc
 sed -i '' "/let g:OmniSharp_server_path = '\/usr\/local\/omnisharp\/run'/d" ~/.vim/vimrc
 sed -i '' '/let g:SuperTabDefaultCompletionTypeDiscovery = \["\&omnifunc:<c-x><c-o>", "\&completefunc:<c-x><c-n>"\]/d' ~/.vim/vimrc
+
+if [ -n $(which code) ]
+then
+	code --uninstall-extension ms-vscode.csharp
+fi

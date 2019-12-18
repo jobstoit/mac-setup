@@ -16,11 +16,20 @@ brew install cocoapods
 pod setup
 
 # Vim configuration
-git clone -q https://github.com/thosakwe/vim-flutter.git ~/.vim/bundle/vim-flutter
-printf "\" Flutter configuration\n" >> ~/.vim/vimrc
-printf "let g:flutter_command = \"flutter\"\n" >> ~/.vim/vimrc
-printf "let g:flutter_hot_reload_on_save = 1\n" >> ~/.vim/vimrc
-printf ":command SimulatorStart !open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app\n" >> ~/.vim/vimrc
-printf ":command SimulatorStop !osascript -e 'quit app \"Simulator\"'\n" >> ~/.vim/vimrc
+if [ -d ~/.vim ]
+then
+	git clone -q https://github.com/thosakwe/vim-flutter.git ~/.vim/bundle/vim-flutter
+	printf "\" Flutter configuration\n" >> ~/.vim/vimrc
+	printf "let g:flutter_command = \"flutter\"\n" >> ~/.vim/vimrc
+	printf "let g:flutter_hot_reload_on_save = 1\n" >> ~/.vim/vimrc
+	printf ":command SimulatorStart !open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app\n" >> ~/.vim/vimrc
+	printf ":command SimulatorStop !osascript -e 'quit app \"Simulator\"'\n" >> ~/.vim/vimrc
+fi
+
+# VsCode Setup
+if [ -n $(which code) ]
+then
+	code --install-extension dart-code.flutter
+fi
 
 flutter

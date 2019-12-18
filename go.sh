@@ -14,3 +14,8 @@ git clone -q https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go
 printf "\" go configuration\n" >> ~/.vim/vimrc
 printf "let g:go_fmt_command = \"goimports\"\n" >> ~/.vim/vimrc
 printf "let g:go_metalinter_autosave = 1\n" >> ~/.vim/vimrc
+
+if [ -n $(which code) ]
+then
+	code --install-extension ms-vscode.Go
+fi
