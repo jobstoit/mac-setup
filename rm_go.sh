@@ -1,4 +1,5 @@
 #!/bin/sh
+set -eux
 sudo echo 'Removing go...'
 sudo rm -rf $(which go golangci-lint dep) $GOPATH $GOROOT ~/.vim/bundle/vim-go
 

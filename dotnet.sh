@@ -1,4 +1,5 @@
 #!/bin/sh
+set -eux
 sudo echo "Installing dotnet..."
 sudo rm -rf /usr/local/dotnet /usr/local/omnisharp /usr/local/bin/dotnet /usr/local/bin/omnisharp
 sudo mkdir -p /usr/local/dotnet /usr/local/omnisharp

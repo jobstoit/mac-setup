@@ -1,4 +1,5 @@
 #!/bin/sh
+set -eux
 sudo echo "Removing dotnet"
 sudo rm -rf $(which dotnet omnisharp) $DOTNET_ROOT ~/.dotnet /usr/local/omnisharp ~/.vim/bundle/omnisharp-vim
 
