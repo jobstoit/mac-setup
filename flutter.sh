@@ -1,14 +1,11 @@
 # install flutter
-set -eux
-FLUTTER_VERSION='v1.12.13+hotfix.8'
-
-if [ $# = 1 ]
-then
-	FLUTTER_VERSION=$1
-fi
+[ $# = 1 ] && FLUTTER_VERSION=$1
+[ -z $FLUTTER_VERSION ] && FLUTTER_VERSION='v1.12.13+hotfix.8'
 
 sudo echo 'Installing flutter...'
-curl -o temp.zip -sL "https://storage.googleapis.com/flutter_infra/releases/stable/macos/flutter_macos_${FLUTTER_VERSION}-stable.zip" && \
+
+[ "$( which flutter )" != "/usr/local/bin/flutter" ] && \
+	curl -o temp.zip -sL "https://storage.googleapis.com/flutter_infra/releases/stable/macos/flutter_macos_${FLUTTER_VERSION}-stable.zip" && \
 	sudo unzip -q -d /usr/local/ temp.zip && \
 	rm temp.zip && \
 	sudo chown -R $USER /usr/local/flutter && \
@@ -24,21 +21,16 @@ brew install cocoapods
 pod setup
 
 # Vim configuration
-if [ -d ~/.vim ]
-then
-	git clone -q https://github.com/thosakwe/vim-flutter.git ~/.vim/bundle/vim-flutter
-	git clone https://github.com/dart-lang/dart-vim-plugin ~/.vim/bundle/dart-vim-plugin
-	printf "\" Flutter configuration\n" >> ~/.vim/vimrc
-	printf "let g:flutter_command = \"flutter\"\n" >> ~/.vim/vimrc
-	printf "let g:flutter_hot_reload_on_save = 1\n" >> ~/.vim/vimrc
-	printf ":command SimulatorStart !open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app\n" >> ~/.vim/vimrc
+[ -d ~/.vim ] && \
+	git clone -q https://github.com/thosakwe/vim-flutter.git ~/.vim/bundle/vim-flutter && \
+	git clone https://github.com/dart-lang/dart-vim-plugin ~/.vim/bundle/dart-vim-plugin && \
+	printf "\" Flutter configuration\n" >> ~/.vim/vimrc && \
+	printf "let g:flutter_command = \"flutter\"\n" >> ~/.vim/vimrc && \
+	printf "let g:flutter_hot_reload_on_save = 1\n" >> ~/.vim/vimrc && \
+	printf ":command SimulatorStart !open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app\n" >> ~/.vim/vimrc && \
 	printf ":command SimulatorStop !osascript -e 'quit app \"Simulator\"'\n" >> ~/.vim/vimrc
-fi
 
 # VsCode Setup
-if [ -n $(which code) ]
-then
-	code --install-extension dart-code.flutter
-fi
+[ -n $(which code) ] && code --install-extension dart-code.flutter
 
 flutter
